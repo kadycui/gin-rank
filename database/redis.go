@@ -13,19 +13,19 @@ var RedisCache *redis.Client
 func InitRedis() {
 	// 初始化redis
 	RedisCache = redis.NewClient(&redis.Options{
-		Addr:     conf.REDIS_URL.Ip + ":" + conf.REDIS_URL.Port,
-		Password: conf.REDIS_URL.Password,
-		DB:       4,
+		Addr:     conf.Redis_Host + ":" + conf.Redis_Port,
+		Password: conf.Redis_Password,
+		DB:       6,
 	})
 
 	_, err := RedisCache.Ping().Result()
 	if err != nil {
-		fmt.Println("链接redis失败！", err)
+		fmt.Println("链接redis失败!!!", err)
 		return
 
 	}
 
-	fmt.Println("链接成功！！")
+	fmt.Println("Redis连接成功!!!")
 }
 
 // Get 获取缓存数据

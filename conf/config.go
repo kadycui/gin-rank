@@ -11,16 +11,16 @@ var (
 	AppMode  string
 	HttpPort string
 
-	MyHost string
-	MyPort string
-	MyUser string
-	MyPw   string
-	MyName string
+	MySQL_Host string
+	MySQL_Port string
+	MySQL_User string
+	MySQL_Password   string
+	MySQL_Db string
 
-	RedisHost string
-	RedisPw   string
-	RedisPort string
-	RedisDb   string
+	Redis_Host string
+	Redis_Password   string
+	Redis_Port string
+	Redis_Db   string
 )
 
 func init() {
@@ -41,18 +41,20 @@ func LoadServer(file *ini.File) {
 }
 
 func LoadMysqlData(file *ini.File) {
-	MyUser = file.Section("mysql").Key("MyUser").String()
-	MyPw = file.Section("mysql").Key("MyPw").String()
-	MyHost = file.Section("mysql").Key("MyHost").String()
-	MyPort = file.Section("mysql").Key("MyPort").String()
-	MyName = file.Section("mysql").Key("MyName").String()
+	MySQL_User = file.Section("mysql").Key("user").String()
+	MySQL_Password = file.Section("mysql").Key("password").String()
+	MySQL_Host = file.Section("mysql").Key("host").String()
+	MySQL_Port = file.Section("mysql").Key("port").String()
+	MySQL_Db = file.Section("mysql").Key("dbname").String()
+
+	fmt.Println(MySQL_User, MySQL_Password, MySQL_Host, MySQL_Port, MySQL_Db)
 }
 
 func LoadRedis(file *ini.File) {
-	RedisHost = file.Section("redis").Key("RedisHost").String()
-	RedisPort = file.Section("redis").Key("RedisPort").String()
-	RedisPw = file.Section("redis").Key("RedisPw").String()
-	RedisDb = file.Section("redis").Key("RedisDb").String()
+	Redis_Host = file.Section("redis").Key("host").String()
+	Redis_Port = file.Section("redis").Key("port").String()
+	Redis_Password = file.Section("redis").Key("password").String()
+	Redis_Db = file.Section("redis").Key("db").String()
 
-	fmt.Println(RedisHost, RedisPort, RedisPw, RedisDb)
+	fmt.Println(Redis_Host, Redis_Port, Redis_Password, Redis_Db)
 }
