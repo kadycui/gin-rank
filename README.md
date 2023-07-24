@@ -16,3 +16,12 @@ go get github.com/swaggo/files
 swag init
 
 ```
+
+
+linux系统下出现
+> bash: swag: command not found
+
+执行以下命令
+```
+export PATH=$(go env GOPATH)/bin:$PATH
+```
